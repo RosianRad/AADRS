@@ -29,7 +29,7 @@ all: AutomaticAccidentDetectionReportingSystem.axf
 AutomaticAccidentDetectionReportingSystem.axf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -L"C:\Users\rosian.rad\Documents\LPCXpresso_8.1.4_606\workspace\nxp_lpcxpresso_11c24_board_lib\Debug" -L"C:\Users\rosian.rad\Documents\LPCXpresso_8.1.4_606\workspace\lpc_chip_11cxx_lib\Debug" -Xlinker -Map="AutomaticAccidentDetectionReportingSystem.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0 -mthumb -T "AutomaticAccidentDetectionReportingSystem_Debug.ld" -o "AutomaticAccidentDetectionReportingSystem.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -nostdlib -L"C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\nxp_lpcxpresso_11c24_board_lib\Debug" -L"C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\lpc_chip_11cxx_lib\Debug" -Xlinker -Map="AutomaticAccidentDetectionReportingSystem.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0 -mthumb -T "AutomaticAccidentDetectionReportingSystem_Debug.ld" -o "AutomaticAccidentDetectionReportingSystem.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
