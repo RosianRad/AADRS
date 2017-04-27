@@ -1,6 +1,5 @@
-src/AutomaticAccidentDetectionReportingSystem.o \
- src/AutomaticAccidentDetectionReportingSystem.d: \
- ../src/AutomaticAccidentDetectionReportingSystem.c \
+src/Functions.o src/Functions.d: ../src/Functions.c \
+ C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\AutomaticAccidentDetectionReportingSystem\inc/Functions.h \
  C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\nxp_lpcxpresso_11c24_board_lib\inc/board.h \
  C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\lpc_chip_11cxx_lib\inc/chip.h \
  C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\lpc_chip_11cxx_lib\inc/lpc_types.h \
@@ -27,11 +26,9 @@ src/AutomaticAccidentDetectionReportingSystem.o \
  C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\lpc_chip_11cxx_lib\inc/i2c_11xx.h \
  C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\lpc_chip_11cxx_lib\inc/ccand_11xx.h \
  C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\nxp_lpcxpresso_11c24_board_lib\inc/board_api.h \
- C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\lpc_chip_11cxx_lib\inc/lpc_types.h \
- C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\AutomaticAccidentDetectionReportingSystem\inc/ADXL345.h \
- C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\AutomaticAccidentDetectionReportingSystem\inc/SIM808.h \
- C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\AutomaticAccidentDetectionReportingSystem\inc/AutomaticAccidentDetectionReportingSystem.h \
- C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\AutomaticAccidentDetectionReportingSystem\inc/Functions.h
+ C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\lpc_chip_11cxx_lib\inc/lpc_types.h
+
+C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\AutomaticAccidentDetectionReportingSystem\inc/Functions.h:
 
 C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\nxp_lpcxpresso_11c24_board_lib\inc/board.h:
 
@@ -86,11 +83,3 @@ C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\lpc_chip_11cxx_lib
 C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\nxp_lpcxpresso_11c24_board_lib\inc/board_api.h:
 
 C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\lpc_chip_11cxx_lib\inc/lpc_types.h:
-
-C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\AutomaticAccidentDetectionReportingSystem\inc/ADXL345.h:
-
-C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\AutomaticAccidentDetectionReportingSystem\inc/SIM808.h:
-
-C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\AutomaticAccidentDetectionReportingSystem\inc/AutomaticAccidentDetectionReportingSystem.h:
-
-C:\Work\Licenta\git\AutomaticAccidentDetectionReportingSystem\AutomaticAccidentDetectionReportingSystem\inc/Functions.h:
