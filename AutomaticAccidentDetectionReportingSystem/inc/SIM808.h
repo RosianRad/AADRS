@@ -33,5 +33,7 @@ void SIM808_Init(void);
 void SIM808_DeInit(void);
 void SendGPSSynchronizationMessage(void);
 void GetGPSPosition(void);
+void SendMessage(void);
+void TransformData(void);
 
 #endif /* SIM808_H_ */

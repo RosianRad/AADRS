@@ -9,6 +9,7 @@
 #include "chip.h"
 #include "SIM808.h"
 #include "Functions.h"
+#include "math.h"
 //#include "AutomaticAccidentDetectionReportingSystem.h"
 
 ///* Transmit and receive buffers */
@@ -22,7 +23,12 @@ const char CGPSINF[] = "AT+CGPSINF=0\r";
 const char CGPSRST[] = "AT+CGPSRST=1\r";
 const char CGPSPWROFF[] = "AT+CGPSPWR=0\r";
 
-char GPSReturnString[] = "";
+const char CMGF[] = "AT+CMGF=1\r";
+const char CMGS[] = "AT+CMGS=\"+40727819906\"\r";
+const char something = 26;
+char TEXT[50] = "";
+
+char GPSReturnString[] = "0,4767.51583,2245.92283,0.000000,19800105235952.000,0,0,0.000000,0.000000";
 char **GPSReturnVector;
 
 /* Transmit and receive buffers */
@@ -60,8 +66,8 @@ void UART_IRQHandler(void)
 
 void SIM808_Init()
 {
-	SystemCoreClockUpdate();
-	Board_Init();
+//	SystemCoreClockUpdate();
+//	Board_Init();
 	Init_UART_PinMux();
 	Board_LED_Set(0, false);
 
@@ -92,7 +98,7 @@ void SIM808_Init()
 	Chip_GPIO_SetPinState(LPC_GPIO, 0, 7, true);
 
 	/*Wait 7 seconds for the module to start*/
-	Delay_mS(7000);
+//	Delay_mS(7000);
 }
 
 void SendGPSSynchronizationMessage()
@@ -115,11 +121,45 @@ void GetGPSPosition()
 	{
 		SendGPSSynchronizationMessage();
 		Chip_UART_SendRB(LPC_USART, &txring, &CGPSINF, sizeof(CGPSINF) - 1);
-		Chip_UART_ReadRB(LPC_USART, &rxring, &GPSReturnString, 128);
+//		Chip_UART_ReadRB(LPC_USART, &rxring, &GPSReturnString, 128);
 		SeparateReturnedString(GPSReturnString,&GPSReturnVector);
 		GPSReturn.Latitude = atof(GPSReturnVector[1]);
 		GPSReturn.Longitude = atof(GPSReturnVector[2]);
 	}
+}
+
+void TransformData()
+{
+	char Latitude[20],Longitude[21];
+
+	GPSReturn.Latitude = GPSReturn.Latitude / 100;
+	int LatitudeInt = (int)GPSReturn.Latitude;
+	float LatitudeFloat = GPSReturn.Latitude - (float)LatitudeInt;
+	GPSReturn.Latitude = (float)LatitudeInt + (LatitudeFloat/60);
+
+	GPSReturn.Longitude = GPSReturn.Longitude / 100;
+	int LongitudeInt = (int)GPSReturn.Longitude;
+	float LongitudeFloat = GPSReturn.Longitude - (float)LongitudeInt;
+	GPSReturn.Longitude = (float)LongitudeInt + (LongitudeFloat/60);
+//	GPSReturn.Longitude = (GPSReturn.Longitude / 100) + (fmod(GPSReturn.Longitude,100)/60);
+
+	sprintf(Latitude,"Latitude: %f",GPSReturn.Latitude);
+	sprintf(Longitude,"\nLongitude: %f",GPSReturn.Longitude);
+
+	strcat(TEXT,Latitude);
+	strcat(TEXT,Longitude);
+}
+
+void SendMessage()
+{
+	Chip_UART_SendRB(LPC_USART, &txring, &CMGF, sizeof(CMGF) - 1);
+	Delay_mS(1000);
+	Chip_UART_SendRB(LPC_USART, &txring, &CMGS, sizeof(CMGS) - 1);
+	Delay_mS(1000);
+	Chip_UART_SendRB(LPC_USART, &txring, &TEXT, sizeof(TEXT) - 1);
+	Delay_mS(100);
+	Chip_UART_SendRB(LPC_USART, &txring, (const uint8_t *)&something, 1);
+	Delay_mS(1000);
 }
 
 void SIM808_DeInit()

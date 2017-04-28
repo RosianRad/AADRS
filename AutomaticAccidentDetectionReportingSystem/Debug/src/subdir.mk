@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/ADXL345.c \
 ../src/AutomaticAccidentDetectionReportingSystem.c \
 ../src/Functions.c \
 ../src/SIM808.c \
@@ -12,6 +13,7 @@ C_SRCS += \
 ../src/sysinit.c 
 
 OBJS += \
+./src/ADXL345.o \
 ./src/AutomaticAccidentDetectionReportingSystem.o \
 ./src/Functions.o \
 ./src/SIM808.o \
@@ -20,6 +22,7 @@ OBJS += \
 ./src/sysinit.o 
 
 C_DEPS += \
+./src/ADXL345.d \
 ./src/AutomaticAccidentDetectionReportingSystem.d \
 ./src/Functions.d \
 ./src/SIM808.d \
