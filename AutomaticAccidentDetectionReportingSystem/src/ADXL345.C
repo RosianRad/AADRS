@@ -50,6 +50,16 @@ void ADXL345_init()
 	ADXL345_WriteReg(LPC_SSP,OFSY,-2,true);
 	ADXL345_WriteReg(LPC_SSP,OFSZ,-4,true);
 
+	ADXL345_WriteReg(LPC_SSP,INT_MAP,0x6C,true);
+
+	ADXL345_WriteReg(LPC_SSP,DATA_FORMAT,0x0B,true);
+	ADXL345_WriteReg(LPC_SSP,POWER_CTL,0x38,true);
+	ADXL345_WriteReg(LPC_SSP,THRESH_ACT,0x50,true);
+	ADXL345_WriteReg(LPC_SSP,THRESH_INACT,0x10,true);
+	ADXL345_WriteReg(LPC_SSP,TIME_INACT,0x05,true);
+	ADXL345_WriteReg(LPC_SSP,ACT_INACT_CTL,0x77,true);
+	ADXL345_WriteReg(LPC_SSP,INT_ENABLE,0x4B,true);
+
 }
 
 /* ADXL345 writing to register; TRUE-with MB; FALSE-without MB */
